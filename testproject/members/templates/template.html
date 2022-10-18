@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="{% static 'myfirst.css' %}">
+<script src="{% static 'myfirst.js' %}"></script>
+<img src="{% static 'pineapple.jpg' %}"><body>
+
+{% for x in fruits %}
+  <h1>{{ x }}</h1>
+{% endfor %}
+<button onclick="myFunction()">Click me!</button>
+<p>In myfirst.css you can see what the stylesheet looks like.</p>
+
+</body>
+<table border='1'>
+  <tr>
+    <th>ID</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+  </tr>
+  {% for x in mymembers %}
+    <tr>
+      <td>{{ x.id }}</td>
+        <td>{{ x.firstname }}</td>
+      <td>{{ x.lastname }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+</html>
+
+
