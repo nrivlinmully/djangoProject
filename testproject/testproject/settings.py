@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-g!q5+k&$fq^net7@b=-0vb+4b+x8bl^c_)6&spw0#hx%6=t35(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'https://personalplanner.azurewebsites.net']
 
 
 # Application definition
