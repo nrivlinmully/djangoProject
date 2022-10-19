@@ -55,4 +55,3 @@ def testing(request):
     'mymembers': mydata,
   }
   return HttpResponse(template.render(context, request))
-#delete this line
