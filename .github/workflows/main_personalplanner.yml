@@ -4,6 +4,10 @@
 
 name: Build and deploy Python app to Azure Web App - personalplanner
 
+env:
+  AZURE_WEBAPP_NAME: 'personalplanner'   # set this to your application's name
+  PYTHON_VERSION: '3.10'
+
 on:
   push:
     branches:
@@ -26,12 +30,12 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
-      
+
       - name: Install dependencies
         run: pip install -r requirements.txt
-        
+
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
-      
+
       - name: Upload artifact for deployment jobs
         uses: actions/upload-artifact@v2
         with:
@@ -45,7 +49,7 @@ jobs:
     needs: build
     environment:
       name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: 'https://personalplanner.azurewebsites.net'
 
     steps:
       - name: Download artifact from build job
@@ -53,11 +57,12 @@ jobs:
         with:
           name: python-app
           path: .
-          
+
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
         with:
           app-name: 'personalplanner'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BFD23D6369734D0C9836C4492D6B1A9E }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CF9214F473FF4B758DB93CF5DE4F06D8 }}
+
