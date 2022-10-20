@@ -4,10 +4,6 @@
 
 name: Build and deploy Python app to Azure Web App - personalplanner
 
-env:
-  AZURE_WEBAPP_NAME: 'planner2'   # set this to your application's name
-  PYTHON_VERSION: '3.10'
-
 on:
   push:
     branches:
@@ -49,7 +45,7 @@ jobs:
     needs: build
     environment:
       name: 'Production'
-      url: 'https://planner2.azurewebsites.net'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
       - name: Download artifact from build job
@@ -64,4 +60,4 @@ jobs:
         with:
           app-name: 'personalplanner'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CF9214F473FF4B758DB93CF5DE4F06D8 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BFD23D6369734D0C9836C4492D6B1A9E }}
